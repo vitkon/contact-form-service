@@ -1,0 +1,28 @@
+{
+  "name": "contact-form-service",
+  "version": "1.0.0",
+  "description": "Contact Form Service",
+  "main": "handler.js",
+  "scripts": {
+    "deploy:dev": "serverless deploy",
+    "deploy:prod": "serverless deploy --stage production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitkon/contact-form-service.git"
+  },
+  "author": "Vitaly Kondratiev <vitalkond@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitkon/contact-form-service/issues"
+  },
+  "homepage": "https://github.com/vitkon/contact-form-service#readme",
+  "dependencies": {
+    "aws-sdk": "^2.353.0"
+  },
+  "devDependencies": {
+    "serverless": "^1.32.0",
+    "serverless-domain-manager": "^2.6.6"
+  }
+}
