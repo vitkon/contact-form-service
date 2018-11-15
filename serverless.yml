@@ -5,12 +5,14 @@ custom:
   customDomain:
     domainName: api.appfocused.com
     certificateName: "www.appfocused.com"
-    basePath: ""
+    basePath: "api"
     stage: ${self:provider.stage}
     createRoute53Record: true
 
 plugins:
   - serverless-domain-manager
+  - serverless-plugin-typescript
+  - serverless-offline
 
 provider:
   name: aws

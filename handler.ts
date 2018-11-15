@@ -1,13 +1,14 @@
-const aws = require("aws-sdk");
+import * as aws from "aws-sdk";
+
 const ses = new aws.SES();
 const myEmail = process.env.EMAIL;
 const myDomain = process.env.DOMAIN;
 
-function generateResponse(code, payload) {
+function generateResponse(code: number, payload: any) {
   return {
     statusCode: code,
     headers: {
-      "Access-Control-Allow-Origin": myDomain,
+      "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "x-requested-with",
       "Access-Control-Allow-Credentials": true
     },
@@ -15,7 +16,7 @@ function generateResponse(code, payload) {
   };
 }
 
-function generateError(code, err) {
+function generateError(code: number, err: any) {
   console.log(err);
   return {
     statusCode: code,
@@ -28,13 +29,23 @@ function generateError(code, err) {
   };
 }
 
-function generateEmailParams(body) {
-  const { email, name, content } = JSON.parse(body);
-  console.log(email, name, content);
+interface IEmailParams {
+  email: string;
+  name: string;
+  content: string;
+}
+
+function generateEmailParams(body: string): aws.SES.SendEmailRequest {
+  const { email, name, content } = JSON.parse(body) as IEmailParams;
+
   if (!(email && name && content)) {
     throw new Error(
       "Missing parameters! Make sure to add parameters 'email', 'name', 'content'."
     );
+  }
+
+  if (!myEmail) {
+    throw new Error("Source email is not configured in environment variables.");
   }
 
   return {
@@ -56,7 +67,7 @@ function generateEmailParams(body) {
   };
 }
 
-module.exports.send = async event => {
+module.exports.send = async (event: any) => {
   try {
     const emailParams = generateEmailParams(event.body);
     const data = await ses.sendEmail(emailParams).promise();

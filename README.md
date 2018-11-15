@@ -42,6 +42,9 @@ https://mydomain.com/myEndpoint
 
 ### gatsby integration
 
+### cloudfront allow post
+https://stackoverflow.com/questions/31253694/this-distribution-is-not-configured-to-allow-the-http-request
+
 ### References
 
 - https://dev.to/adnanrahic/building-a-serverless-contact-form-with-aws-lambda-and-aws-ses-4jm0
