@@ -52,3 +52,4 @@ https://stackoverflow.com/questions/31253694/this-distribution-is-not-configured
 - https://github.com/amplify-education/serverless-domain-manager
 - https://serverless.com/blog/serverless-api-gateway-domain/
 - https://www.gatsbyjs.org/docs/api-proxy/
+- https://blog.shovonhasan.com/deploying-a-typescript-node-aws-lambda-function-with-serverless/
